@@ -1,0 +1,332 @@
+
+
+================================================================
+== Vivado HLS Report for 'digitrec'
+================================================================
+* Date:           Tue Dec  6 21:54:29 2022
+
+* Version:        2016.2 (Build 1577090 on Thu Jun 02 16:59:10 MDT 2016)
+* Project:        1-nn.prj
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z020clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|      9.72|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+---------+
+    |  Latency  |  Interval | Pipeline|
+    | min | max | min | max |   Type  |
+    +-----+-----+-----+-----+---------+
+    |   96|   96|   97|   97|   none  |
+    +-----+-----+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        +--------------------------------+--------------------+-----+-----+-----+-----+---------+
+        |                                |                    |  Latency  |  Interval | Pipeline|
+        |            Instance            |       Module       | min | max | min | max |   Type  |
+        +--------------------------------+--------------------+-----+-----+-----+-----+---------+
+        |grp_digitrec_Conv1d_fu_1181     |digitrec_Conv1d     |   95|   95|   95|   95|   none  |
+        |grp_digitrec_MatVecMul_fu_1263  |digitrec_MatVecMul  |   30|   30|   30|   30|   none  |
+        |grp_digitrec_DotProd_fu_1507    |digitrec_DotProd    |   16|   16|   16|   16|   none  |
+        |grp_digitrec_VVadd_fu_1552      |digitrec_VVadd      |   12|   12|   12|   12|   none  |
+        +--------------------------------+--------------------+-----+-----+-----+-----+---------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  |
++-----------------+---------+-------+--------+-------+
+|DSP              |        -|      -|       -|      -|
+|Expression       |        -|      -|       -|      -|
+|FIFO             |        -|      -|       -|      -|
+|Instance         |        -|    444|    6221|   9958|
+|Memory           |        -|      -|       -|      -|
+|Multiplexer      |        -|      -|       -|      1|
+|Register         |        -|      -|       6|      -|
++-----------------+---------+-------+--------+-------+
+|Total            |        0|    444|    6227|   9959|
++-----------------+---------+-------+--------+-------+
+|Available        |      280|    220|  106400|  53200|
++-----------------+---------+-------+--------+-------+
+|Utilization (%)  |        0|    201|       5|     18|
++-----------------+---------+-------+--------+-------+
+
++ Detail: 
+    * Instance: 
+    +--------------------------------+--------------------+---------+-------+------+------+
+    |            Instance            |       Module       | BRAM_18K| DSP48E|  FF  |  LUT |
+    +--------------------------------+--------------------+---------+-------+------+------+
+    |grp_digitrec_Conv1d_fu_1181     |digitrec_Conv1d     |        0|    400|  4862|  7088|
+    |grp_digitrec_DotProd_fu_1507    |digitrec_DotProd    |        0|      4|    46|   301|
+    |grp_digitrec_MatVecMul_fu_1263  |digitrec_MatVecMul  |        0|     40|  1306|  2270|
+    |grp_digitrec_VVadd_fu_1552      |digitrec_VVadd      |        0|      0|     7|   299|
+    +--------------------------------+--------------------+---------+-------+------+------+
+    |Total                           |                    |        0|    444|  6221|  9958|
+    +--------------------------------+--------------------+---------+-------+------+------+
+
+    * DSP48: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    N/A
+
+    * Multiplexer: 
+    +-----------+----+-----------+-----+-----------+
+    |    Name   | LUT| Input Size| Bits| Total Bits|
+    +-----------+----+-----------+-----+-----------+
+    |ap_NS_fsm  |   1|          3|    1|          3|
+    +-----------+----+-----------+-----+-----------+
+    |Total      |   1|          3|    1|          3|
+    +-----------+----+-----------+-----+-----------+
+
+    * Register: 
+    +------------------------------------------------+---+----+-----+-----------+
+    |                      Name                      | FF| LUT| Bits| Const Bits|
+    +------------------------------------------------+---+----+-----+-----------+
+    |ap_CS_fsm                                       |  2|   0|    2|          0|
+    |ap_reg_grp_digitrec_Conv1d_fu_1181_ap_start     |  1|   0|    1|          0|
+    |ap_reg_grp_digitrec_DotProd_fu_1507_ap_start    |  1|   0|    1|          0|
+    |ap_reg_grp_digitrec_MatVecMul_fu_1263_ap_start  |  1|   0|    1|          0|
+    |ap_reg_grp_digitrec_VVadd_fu_1552_ap_start      |  1|   0|    1|          0|
+    +------------------------------------------------+---+----+-----+-----------+
+    |Total                                           |  6|   0|    6|          0|
+    +------------------------------------------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++------------------+-----+-----+------------+--------------+--------------+
+|     RTL Ports    | Dir | Bits|  Protocol  | Source Object|    C Type    |
++------------------+-----+-----+------------+--------------+--------------+
+|ap_clk            |  in |    1| ap_ctrl_hs |   digitrec   | return value |
+|ap_rst            |  in |    1| ap_ctrl_hs |   digitrec   | return value |
+|ap_start          |  in |    1| ap_ctrl_hs |   digitrec   | return value |
+|ap_done           | out |    1| ap_ctrl_hs |   digitrec   | return value |
+|ap_idle           | out |    1| ap_ctrl_hs |   digitrec   | return value |
+|ap_ready          | out |    1| ap_ctrl_hs |   digitrec   | return value |
+|ap_return         | out |    4| ap_ctrl_hs |   digitrec   | return value |
+|a_0               |  in |   32|   ap_none  |      a_0     |    pointer   |
+|a_1               |  in |   32|   ap_none  |      a_1     |    pointer   |
+|a_2               |  in |   32|   ap_none  |      a_2     |    pointer   |
+|a_3               |  in |   32|   ap_none  |      a_3     |    pointer   |
+|a_4               |  in |   32|   ap_none  |      a_4     |    pointer   |
+|a_5               |  in |   32|   ap_none  |      a_5     |    pointer   |
+|a_6               |  in |   32|   ap_none  |      a_6     |    pointer   |
+|a_7               |  in |   32|   ap_none  |      a_7     |    pointer   |
+|a_8               |  in |   32|   ap_none  |      a_8     |    pointer   |
+|a_9               |  in |   32|   ap_none  |      a_9     |    pointer   |
+|b_0               |  in |   32|   ap_none  |      b_0     |    pointer   |
+|b_1               |  in |   32|   ap_none  |      b_1     |    pointer   |
+|b_2               |  in |   32|   ap_none  |      b_2     |    pointer   |
+|b_3               |  in |   32|   ap_none  |      b_3     |    pointer   |
+|b_4               |  in |   32|   ap_none  |      b_4     |    pointer   |
+|b_5               |  in |   32|   ap_none  |      b_5     |    pointer   |
+|b_6               |  in |   32|   ap_none  |      b_6     |    pointer   |
+|b_7               |  in |   32|   ap_none  |      b_7     |    pointer   |
+|b_8               |  in |   32|   ap_none  |      b_8     |    pointer   |
+|b_9               |  in |   32|   ap_none  |      b_9     |    pointer   |
+|c_address0        | out |    4|  ap_memory |       c      |     array    |
+|c_ce0             | out |    1|  ap_memory |       c      |     array    |
+|c_we0             | out |    1|  ap_memory |       c      |     array    |
+|c_d0              | out |   32|  ap_memory |       c      |     array    |
+|res               | out |   32|   ap_vld   |      res     |    pointer   |
+|res_ap_vld        | out |    1|   ap_vld   |      res     |    pointer   |
+|conv1d_0          | out |   32|   ap_vld   |   conv1d_0   |    pointer   |
+|conv1d_0_ap_vld   | out |    1|   ap_vld   |   conv1d_0   |    pointer   |
+|conv1d_1          | out |   32|   ap_vld   |   conv1d_1   |    pointer   |
+|conv1d_1_ap_vld   | out |    1|   ap_vld   |   conv1d_1   |    pointer   |
+|conv1d_2          | out |   32|   ap_vld   |   conv1d_2   |    pointer   |
+|conv1d_2_ap_vld   | out |    1|   ap_vld   |   conv1d_2   |    pointer   |
+|conv1d_3          | out |   32|   ap_vld   |   conv1d_3   |    pointer   |
+|conv1d_3_ap_vld   | out |    1|   ap_vld   |   conv1d_3   |    pointer   |
+|conv1d_4          | out |   32|   ap_vld   |   conv1d_4   |    pointer   |
+|conv1d_4_ap_vld   | out |    1|   ap_vld   |   conv1d_4   |    pointer   |
+|conv1d_5          | out |   32|   ap_vld   |   conv1d_5   |    pointer   |
+|conv1d_5_ap_vld   | out |    1|   ap_vld   |   conv1d_5   |    pointer   |
+|conv1d_6          | out |   32|   ap_vld   |   conv1d_6   |    pointer   |
+|conv1d_6_ap_vld   | out |    1|   ap_vld   |   conv1d_6   |    pointer   |
+|conv1d_7          | out |   32|   ap_vld   |   conv1d_7   |    pointer   |
+|conv1d_7_ap_vld   | out |    1|   ap_vld   |   conv1d_7   |    pointer   |
+|conv1d_8          | out |   32|   ap_vld   |   conv1d_8   |    pointer   |
+|conv1d_8_ap_vld   | out |    1|   ap_vld   |   conv1d_8   |    pointer   |
+|conv1d_9          | out |   32|   ap_vld   |   conv1d_9   |    pointer   |
+|conv1d_9_ap_vld   | out |    1|   ap_vld   |   conv1d_9   |    pointer   |
+|conv1d_10         | out |   32|   ap_vld   |   conv1d_10  |    pointer   |
+|conv1d_10_ap_vld  | out |    1|   ap_vld   |   conv1d_10  |    pointer   |
+|conv1d_11         | out |   32|   ap_vld   |   conv1d_11  |    pointer   |
+|conv1d_11_ap_vld  | out |    1|   ap_vld   |   conv1d_11  |    pointer   |
+|conv1d_12         | out |   32|   ap_vld   |   conv1d_12  |    pointer   |
+|conv1d_12_ap_vld  | out |    1|   ap_vld   |   conv1d_12  |    pointer   |
+|conv1d_13         | out |   32|   ap_vld   |   conv1d_13  |    pointer   |
+|conv1d_13_ap_vld  | out |    1|   ap_vld   |   conv1d_13  |    pointer   |
+|conv1d_14         | out |   32|   ap_vld   |   conv1d_14  |    pointer   |
+|conv1d_14_ap_vld  | out |    1|   ap_vld   |   conv1d_14  |    pointer   |
+|conv1d_15         | out |   32|   ap_vld   |   conv1d_15  |    pointer   |
+|conv1d_15_ap_vld  | out |    1|   ap_vld   |   conv1d_15  |    pointer   |
+|conv1d_16         | out |   32|   ap_vld   |   conv1d_16  |    pointer   |
+|conv1d_16_ap_vld  | out |    1|   ap_vld   |   conv1d_16  |    pointer   |
+|conv1d_17         | out |   32|   ap_vld   |   conv1d_17  |    pointer   |
+|conv1d_17_ap_vld  | out |    1|   ap_vld   |   conv1d_17  |    pointer   |
+|conv1d_18         | out |   32|   ap_vld   |   conv1d_18  |    pointer   |
+|conv1d_18_ap_vld  | out |    1|   ap_vld   |   conv1d_18  |    pointer   |
+|A_0_0             |  in |   32|   ap_none  |     A_0_0    |    pointer   |
+|A_0_1             |  in |   32|   ap_none  |     A_0_1    |    pointer   |
+|A_0_2             |  in |   32|   ap_none  |     A_0_2    |    pointer   |
+|A_0_3             |  in |   32|   ap_none  |     A_0_3    |    pointer   |
+|A_0_4             |  in |   32|   ap_none  |     A_0_4    |    pointer   |
+|A_0_5             |  in |   32|   ap_none  |     A_0_5    |    pointer   |
+|A_0_6             |  in |   32|   ap_none  |     A_0_6    |    pointer   |
+|A_0_7             |  in |   32|   ap_none  |     A_0_7    |    pointer   |
+|A_0_8             |  in |   32|   ap_none  |     A_0_8    |    pointer   |
+|A_0_9             |  in |   32|   ap_none  |     A_0_9    |    pointer   |
+|A_1_0             |  in |   32|   ap_none  |     A_1_0    |    pointer   |
+|A_1_1             |  in |   32|   ap_none  |     A_1_1    |    pointer   |
+|A_1_2             |  in |   32|   ap_none  |     A_1_2    |    pointer   |
+|A_1_3             |  in |   32|   ap_none  |     A_1_3    |    pointer   |
+|A_1_4             |  in |   32|   ap_none  |     A_1_4    |    pointer   |
+|A_1_5             |  in |   32|   ap_none  |     A_1_5    |    pointer   |
+|A_1_6             |  in |   32|   ap_none  |     A_1_6    |    pointer   |
+|A_1_7             |  in |   32|   ap_none  |     A_1_7    |    pointer   |
+|A_1_8             |  in |   32|   ap_none  |     A_1_8    |    pointer   |
+|A_1_9             |  in |   32|   ap_none  |     A_1_9    |    pointer   |
+|A_2_0             |  in |   32|   ap_none  |     A_2_0    |    pointer   |
+|A_2_1             |  in |   32|   ap_none  |     A_2_1    |    pointer   |
+|A_2_2             |  in |   32|   ap_none  |     A_2_2    |    pointer   |
+|A_2_3             |  in |   32|   ap_none  |     A_2_3    |    pointer   |
+|A_2_4             |  in |   32|   ap_none  |     A_2_4    |    pointer   |
+|A_2_5             |  in |   32|   ap_none  |     A_2_5    |    pointer   |
+|A_2_6             |  in |   32|   ap_none  |     A_2_6    |    pointer   |
+|A_2_7             |  in |   32|   ap_none  |     A_2_7    |    pointer   |
+|A_2_8             |  in |   32|   ap_none  |     A_2_8    |    pointer   |
+|A_2_9             |  in |   32|   ap_none  |     A_2_9    |    pointer   |
+|A_3_0             |  in |   32|   ap_none  |     A_3_0    |    pointer   |
+|A_3_1             |  in |   32|   ap_none  |     A_3_1    |    pointer   |
+|A_3_2             |  in |   32|   ap_none  |     A_3_2    |    pointer   |
+|A_3_3             |  in |   32|   ap_none  |     A_3_3    |    pointer   |
+|A_3_4             |  in |   32|   ap_none  |     A_3_4    |    pointer   |
+|A_3_5             |  in |   32|   ap_none  |     A_3_5    |    pointer   |
+|A_3_6             |  in |   32|   ap_none  |     A_3_6    |    pointer   |
+|A_3_7             |  in |   32|   ap_none  |     A_3_7    |    pointer   |
+|A_3_8             |  in |   32|   ap_none  |     A_3_8    |    pointer   |
+|A_3_9             |  in |   32|   ap_none  |     A_3_9    |    pointer   |
+|A_4_0             |  in |   32|   ap_none  |     A_4_0    |    pointer   |
+|A_4_1             |  in |   32|   ap_none  |     A_4_1    |    pointer   |
+|A_4_2             |  in |   32|   ap_none  |     A_4_2    |    pointer   |
+|A_4_3             |  in |   32|   ap_none  |     A_4_3    |    pointer   |
+|A_4_4             |  in |   32|   ap_none  |     A_4_4    |    pointer   |
+|A_4_5             |  in |   32|   ap_none  |     A_4_5    |    pointer   |
+|A_4_6             |  in |   32|   ap_none  |     A_4_6    |    pointer   |
+|A_4_7             |  in |   32|   ap_none  |     A_4_7    |    pointer   |
+|A_4_8             |  in |   32|   ap_none  |     A_4_8    |    pointer   |
+|A_4_9             |  in |   32|   ap_none  |     A_4_9    |    pointer   |
+|A_5_0             |  in |   32|   ap_none  |     A_5_0    |    pointer   |
+|A_5_1             |  in |   32|   ap_none  |     A_5_1    |    pointer   |
+|A_5_2             |  in |   32|   ap_none  |     A_5_2    |    pointer   |
+|A_5_3             |  in |   32|   ap_none  |     A_5_3    |    pointer   |
+|A_5_4             |  in |   32|   ap_none  |     A_5_4    |    pointer   |
+|A_5_5             |  in |   32|   ap_none  |     A_5_5    |    pointer   |
+|A_5_6             |  in |   32|   ap_none  |     A_5_6    |    pointer   |
+|A_5_7             |  in |   32|   ap_none  |     A_5_7    |    pointer   |
+|A_5_8             |  in |   32|   ap_none  |     A_5_8    |    pointer   |
+|A_5_9             |  in |   32|   ap_none  |     A_5_9    |    pointer   |
+|A_6_0             |  in |   32|   ap_none  |     A_6_0    |    pointer   |
+|A_6_1             |  in |   32|   ap_none  |     A_6_1    |    pointer   |
+|A_6_2             |  in |   32|   ap_none  |     A_6_2    |    pointer   |
+|A_6_3             |  in |   32|   ap_none  |     A_6_3    |    pointer   |
+|A_6_4             |  in |   32|   ap_none  |     A_6_4    |    pointer   |
+|A_6_5             |  in |   32|   ap_none  |     A_6_5    |    pointer   |
+|A_6_6             |  in |   32|   ap_none  |     A_6_6    |    pointer   |
+|A_6_7             |  in |   32|   ap_none  |     A_6_7    |    pointer   |
+|A_6_8             |  in |   32|   ap_none  |     A_6_8    |    pointer   |
+|A_6_9             |  in |   32|   ap_none  |     A_6_9    |    pointer   |
+|A_7_0             |  in |   32|   ap_none  |     A_7_0    |    pointer   |
+|A_7_1             |  in |   32|   ap_none  |     A_7_1    |    pointer   |
+|A_7_2             |  in |   32|   ap_none  |     A_7_2    |    pointer   |
+|A_7_3             |  in |   32|   ap_none  |     A_7_3    |    pointer   |
+|A_7_4             |  in |   32|   ap_none  |     A_7_4    |    pointer   |
+|A_7_5             |  in |   32|   ap_none  |     A_7_5    |    pointer   |
+|A_7_6             |  in |   32|   ap_none  |     A_7_6    |    pointer   |
+|A_7_7             |  in |   32|   ap_none  |     A_7_7    |    pointer   |
+|A_7_8             |  in |   32|   ap_none  |     A_7_8    |    pointer   |
+|A_7_9             |  in |   32|   ap_none  |     A_7_9    |    pointer   |
+|A_8_0             |  in |   32|   ap_none  |     A_8_0    |    pointer   |
+|A_8_1             |  in |   32|   ap_none  |     A_8_1    |    pointer   |
+|A_8_2             |  in |   32|   ap_none  |     A_8_2    |    pointer   |
+|A_8_3             |  in |   32|   ap_none  |     A_8_3    |    pointer   |
+|A_8_4             |  in |   32|   ap_none  |     A_8_4    |    pointer   |
+|A_8_5             |  in |   32|   ap_none  |     A_8_5    |    pointer   |
+|A_8_6             |  in |   32|   ap_none  |     A_8_6    |    pointer   |
+|A_8_7             |  in |   32|   ap_none  |     A_8_7    |    pointer   |
+|A_8_8             |  in |   32|   ap_none  |     A_8_8    |    pointer   |
+|A_8_9             |  in |   32|   ap_none  |     A_8_9    |    pointer   |
+|A_9_0             |  in |   32|   ap_none  |     A_9_0    |    pointer   |
+|A_9_1             |  in |   32|   ap_none  |     A_9_1    |    pointer   |
+|A_9_2             |  in |   32|   ap_none  |     A_9_2    |    pointer   |
+|A_9_3             |  in |   32|   ap_none  |     A_9_3    |    pointer   |
+|A_9_4             |  in |   32|   ap_none  |     A_9_4    |    pointer   |
+|A_9_5             |  in |   32|   ap_none  |     A_9_5    |    pointer   |
+|A_9_6             |  in |   32|   ap_none  |     A_9_6    |    pointer   |
+|A_9_7             |  in |   32|   ap_none  |     A_9_7    |    pointer   |
+|A_9_8             |  in |   32|   ap_none  |     A_9_8    |    pointer   |
+|A_9_9             |  in |   32|   ap_none  |     A_9_9    |    pointer   |
+|d_0_i             |  in |   32|   ap_ovld  |      d_0     |    pointer   |
+|d_0_o             | out |   32|   ap_ovld  |      d_0     |    pointer   |
+|d_0_o_ap_vld      | out |    1|   ap_ovld  |      d_0     |    pointer   |
+|d_1_i             |  in |   32|   ap_ovld  |      d_1     |    pointer   |
+|d_1_o             | out |   32|   ap_ovld  |      d_1     |    pointer   |
+|d_1_o_ap_vld      | out |    1|   ap_ovld  |      d_1     |    pointer   |
+|d_2_i             |  in |   32|   ap_ovld  |      d_2     |    pointer   |
+|d_2_o             | out |   32|   ap_ovld  |      d_2     |    pointer   |
+|d_2_o_ap_vld      | out |    1|   ap_ovld  |      d_2     |    pointer   |
+|d_3_i             |  in |   32|   ap_ovld  |      d_3     |    pointer   |
+|d_3_o             | out |   32|   ap_ovld  |      d_3     |    pointer   |
+|d_3_o_ap_vld      | out |    1|   ap_ovld  |      d_3     |    pointer   |
+|d_4_i             |  in |   32|   ap_ovld  |      d_4     |    pointer   |
+|d_4_o             | out |   32|   ap_ovld  |      d_4     |    pointer   |
+|d_4_o_ap_vld      | out |    1|   ap_ovld  |      d_4     |    pointer   |
+|d_5_i             |  in |   32|   ap_ovld  |      d_5     |    pointer   |
+|d_5_o             | out |   32|   ap_ovld  |      d_5     |    pointer   |
+|d_5_o_ap_vld      | out |    1|   ap_ovld  |      d_5     |    pointer   |
+|d_6_i             |  in |   32|   ap_ovld  |      d_6     |    pointer   |
+|d_6_o             | out |   32|   ap_ovld  |      d_6     |    pointer   |
+|d_6_o_ap_vld      | out |    1|   ap_ovld  |      d_6     |    pointer   |
+|d_7_i             |  in |   32|   ap_ovld  |      d_7     |    pointer   |
+|d_7_o             | out |   32|   ap_ovld  |      d_7     |    pointer   |
+|d_7_o_ap_vld      | out |    1|   ap_ovld  |      d_7     |    pointer   |
+|d_8_i             |  in |   32|   ap_ovld  |      d_8     |    pointer   |
+|d_8_o             | out |   32|   ap_ovld  |      d_8     |    pointer   |
+|d_8_o_ap_vld      | out |    1|   ap_ovld  |      d_8     |    pointer   |
+|d_9_i             |  in |   32|   ap_ovld  |      d_9     |    pointer   |
+|d_9_o             | out |   32|   ap_ovld  |      d_9     |    pointer   |
+|d_9_o_ap_vld      | out |    1|   ap_ovld  |      d_9     |    pointer   |
++------------------+-----+-----+------------+--------------+--------------+
+

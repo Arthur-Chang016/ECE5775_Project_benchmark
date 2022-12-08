@@ -1,0 +1,170 @@
+
+
+================================================================
+== Vivado HLS Report for 'digitrec_DotProd'
+================================================================
+* Date:           Tue Dec  6 21:54:24 2022
+
+* Version:        2016.2 (Build 1577090 on Thu Jun 02 16:59:10 MDT 2016)
+* Project:        1-nn.prj
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z020clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|      8.31|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+---------+
+    |  Latency  |  Interval | Pipeline|
+    | min | max | min | max |   Type  |
+    +-----+-----+-----+-----+---------+
+    |   16|   16|   16|   16|   none  |
+    +-----+-----+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +----------------+-----+-----+----------+-----------+-----------+------+----------+
+        |                |  Latency  | Iteration|  Initiation Interval  | Trip |          |
+        |    Loop Name   | min | max |  Latency |  achieved |   target  | Count| Pipelined|
+        +----------------+-----+-----+----------+-----------+-----------+------+----------+
+        |- DotProd_pipe  |   14|   14|         6|          1|          1|    10|    yes   |
+        +----------------+-----+-----+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  |
++-----------------+---------+-------+--------+-------+
+|DSP              |        -|      -|       -|      -|
+|Expression       |        -|      -|       0|      6|
+|FIFO             |        -|      -|       -|      -|
+|Instance         |        -|      4|       0|    256|
+|Memory           |        -|      -|       -|      -|
+|Multiplexer      |        -|      -|       -|     38|
+|Register         |        -|      -|      46|      1|
++-----------------+---------+-------+--------+-------+
+|Total            |        0|      4|      46|    301|
++-----------------+---------+-------+--------+-------+
+|Available        |      280|    220|  106400|  53200|
++-----------------+---------+-------+--------+-------+
+|Utilization (%)  |        0|      1|   ~0   |   ~0  |
++-----------------+---------+-------+--------+-------+
+
++ Detail: 
+    * Instance: 
+    +----------------------------------+------------------------------+---------+-------+---+-----+
+    |             Instance             |            Module            | BRAM_18K| DSP48E| FF| LUT |
+    +----------------------------------+------------------------------+---------+-------+---+-----+
+    |digitrec_mul_32s_32s_32_6_U26     |digitrec_mul_32s_32s_32_6     |        0|      4|  0|    0|
+    |digitrec_mux_10to1_sel4_32_1_U24  |digitrec_mux_10to1_sel4_32_1  |        0|      0|  0|  128|
+    |digitrec_mux_10to1_sel4_32_1_U25  |digitrec_mux_10to1_sel4_32_1  |        0|      0|  0|  128|
+    +----------------------------------+------------------------------+---------+-------+---+-----+
+    |Total                             |                              |        0|      4|  0|  256|
+    +----------------------------------+------------------------------+---------+-------+---+-----+
+
+    * DSP48: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +--------------------+----------+-------+---+----+------------+------------+
+    |    Variable Name   | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +--------------------+----------+-------+---+----+------------+------------+
+    |i_3_fu_221_p2       |     +    |      0|  0|   4|           4|           1|
+    |exitcond_fu_215_p2  |   icmp   |      0|  0|   2|           4|           4|
+    +--------------------+----------+-------+---+----+------------+------------+
+    |Total               |          |      0|  0|   6|           8|           5|
+    +--------------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-----------------------+----+-----------+-----+-----------+
+    |          Name         | LUT| Input Size| Bits| Total Bits|
+    +-----------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm              |   1|          4|    1|          4|
+    |ap_reg_ppiten_pp0_it5  |   1|          2|    1|          2|
+    |i_reg_204              |   4|          2|    4|          8|
+    |res_reg_192            |  32|          2|   32|         64|
+    +-----------------------+----+-----------+-----+-----------+
+    |Total                  |  38|         10|   38|         78|
+    +-----------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-----------------------+----+----+-----+-----------+
+    |          Name         | FF | LUT| Bits| Const Bits|
+    +-----------------------+----+----+-----+-----------+
+    |ap_CS_fsm              |   3|   0|    3|          0|
+    |ap_reg_ppiten_pp0_it0  |   1|   0|    1|          0|
+    |ap_reg_ppiten_pp0_it1  |   1|   0|    1|          0|
+    |ap_reg_ppiten_pp0_it2  |   1|   0|    1|          0|
+    |ap_reg_ppiten_pp0_it3  |   1|   0|    1|          0|
+    |ap_reg_ppiten_pp0_it4  |   1|   0|    1|          0|
+    |ap_reg_ppiten_pp0_it5  |   1|   0|    1|          0|
+    |exitcond_reg_365       |   1|   0|    1|          0|
+    |i_reg_204              |   4|   0|    4|          0|
+    |res_reg_192            |  32|   0|   32|          0|
+    |exitcond_reg_365       |   0|   1|    1|          0|
+    +-----------------------+----+----+-----+-----------+
+    |Total                  |  46|   1|   47|          0|
+    +-----------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-----------+-----+-----+------------+------------------+--------------+
+| RTL Ports | Dir | Bits|  Protocol  |   Source Object  |    C Type    |
++-----------+-----+-----+------------+------------------+--------------+
+|ap_clk     |  in |    1| ap_ctrl_hs | digitrec_DotProd | return value |
+|ap_rst     |  in |    1| ap_ctrl_hs | digitrec_DotProd | return value |
+|ap_start   |  in |    1| ap_ctrl_hs | digitrec_DotProd | return value |
+|ap_done    | out |    1| ap_ctrl_hs | digitrec_DotProd | return value |
+|ap_idle    | out |    1| ap_ctrl_hs | digitrec_DotProd | return value |
+|ap_ready   | out |    1| ap_ctrl_hs | digitrec_DotProd | return value |
+|ap_return  | out |   32| ap_ctrl_hs | digitrec_DotProd | return value |
+|a_0_read   |  in |   32|   ap_none  |     a_0_read     |    scalar    |
+|a_1_read   |  in |   32|   ap_none  |     a_1_read     |    scalar    |
+|a_2_read   |  in |   32|   ap_none  |     a_2_read     |    scalar    |
+|a_3_read   |  in |   32|   ap_none  |     a_3_read     |    scalar    |
+|a_4_read   |  in |   32|   ap_none  |     a_4_read     |    scalar    |
+|a_5_read   |  in |   32|   ap_none  |     a_5_read     |    scalar    |
+|a_6_read   |  in |   32|   ap_none  |     a_6_read     |    scalar    |
+|a_7_read   |  in |   32|   ap_none  |     a_7_read     |    scalar    |
+|a_8_read   |  in |   32|   ap_none  |     a_8_read     |    scalar    |
+|a_9_read   |  in |   32|   ap_none  |     a_9_read     |    scalar    |
+|b_0_read   |  in |   32|   ap_none  |     b_0_read     |    scalar    |
+|b_1_read   |  in |   32|   ap_none  |     b_1_read     |    scalar    |
+|b_2_read   |  in |   32|   ap_none  |     b_2_read     |    scalar    |
+|b_3_read   |  in |   32|   ap_none  |     b_3_read     |    scalar    |
+|b_4_read   |  in |   32|   ap_none  |     b_4_read     |    scalar    |
+|b_5_read   |  in |   32|   ap_none  |     b_5_read     |    scalar    |
+|b_6_read   |  in |   32|   ap_none  |     b_6_read     |    scalar    |
+|b_7_read   |  in |   32|   ap_none  |     b_7_read     |    scalar    |
+|b_8_read   |  in |   32|   ap_none  |     b_8_read     |    scalar    |
+|b_9_read   |  in |   32|   ap_none  |     b_9_read     |    scalar    |
++-----------+-----+-----+------------+------------------+--------------+
+
